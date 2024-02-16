@@ -1,18 +1,2 @@
 #!/bin/bash
-
-# Split the PATH variable into an array using ':' as the delimiter
-IFS=':' read -r -a directories <<< "$PATH"
-
-# Initialize a counter for directories
-dir_count=0
-
-# Iterate through each directory in the array
-for dir in "${directories[@]}"; do
-    # Check if the directory exists and is a directory
-    if [ -d "$dir" ]; then
-        ((dir_count++))
-    fi
-done
-
-# Print the total count of directories in the PATH
-echo "Total number of directories in the PATH: $dir_count"
+echo $PATH | tr ':' '\n' | wc -l
